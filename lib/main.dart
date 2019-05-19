@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:programacao_mobile/heroesdetail.dart';
-
 import 'package:programacao_mobile/Heroes.dart';
 
 void main() => runApp(MyApp());
@@ -24,9 +23,7 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
-
   final String title;
-
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -44,16 +41,15 @@ class _MyHomePageState extends State<MyHomePage> {
  void initState(){
    super.initState();
    fetchData();
-
  }
 
-  fetchData() async{
+// Recebendo JSON
+fetchData() async{
   var res = await http.get(url);
   var  decodeJson = jsonDecode(res.body);
   herois = Heroes.fromJson(decodeJson);
   setState(() {});
-
-  }
+}
 
 // Visual
   @override
@@ -77,7 +73,6 @@ class _MyHomePageState extends State<MyHomePage> {
             onTap: (){
               Navigator.push(context, MaterialPageRoute(builder: (context) => HeroesDetail(
                 heroisM: hero,
-
               )));
             },
     child:Hero(
@@ -95,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           image: NetworkImage(hero.thumbnail.path + "." + hero.thumbnail.extension)),
                     ),
                   ),
-                  Text(hero.name, style:  TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),),
+                  Text(hero.name, textAlign: TextAlign.center, style:  TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),),
                 ],
               )
           ),),), )).toList(),)
@@ -103,16 +98,6 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
 
 class DataSearch extends SearchDelegate<String>{
   final heroes = [
