@@ -42,31 +42,39 @@ class _MyHomePageState extends State<MyHomePage> {
   var offset = 0;
   var firstCall = true;
   var lastTotalReturnedItems = 0;
-  List<Results> listH;
+  List<Results> listH = new List<Results>();
   ScrollController _scrollController = new ScrollController();
   Heroes herois;
 
+
   static const  baseUrl = 'https://gateway.marvel.com:443';
   final url = baseUrl + "/v1/public/characters";
-  String _textT="";
-  String _aux ="";
+
 
 @override
  void initState(){
    super.initState();
-   fetchData();
+   if(firstCall == true) {
+     fetchData();
+   }
    _scrollController.addListener((){
   if(_scrollController.position.pixels == _scrollController.position.maxScrollExtent){
+
     fetchData();
+
   }
    });
  }
+
+
 
  @override
 void dispose(){
   _scrollController.dispose();
   super.dispose();
 }
+ 
+
 // Recebendo JSON
 fetchData() async{
 
@@ -87,6 +95,7 @@ fetchData() async{
   var res = await Dio().get(url, queryParameters: queryParameters);
 
   setState(() {
+
     var  decodeJson = jsonDecode(res.toString());
     herois = Heroes.fromJson(decodeJson);
       });
@@ -94,13 +103,17 @@ fetchData() async{
      this.lastTotalReturnedItems = herois.data.count;
       page++;
 
-  firstCall = false;
-  listH = herois.data.results;
 
-  if (!firstCall) {
+  if(firstCall == true) {
+    listH += herois.data.results;
+
+  }else{
+
     if (this.lastTotalReturnedItems < itemsPerPage) {
-      listH.addAll(herois.data.results);
+       listH += herois.data.results;
+
     }
+    firstCall = false;
   }
   }
 
@@ -130,7 +143,7 @@ fetchData() async{
       drawer: Drawer(),
         body: herois == null?Center(child: CircularProgressIndicator(),)
 
-        : GridView.count(crossAxisCount: 2, controller: _scrollController, children: herois.data.results.map((hero) => Padding(
+        : GridView.count(crossAxisCount: 2, controller: _scrollController, children: listH.map((hero) => Padding(
           padding: const EdgeInsets.all(2.0),
 
           child: InkWell(
