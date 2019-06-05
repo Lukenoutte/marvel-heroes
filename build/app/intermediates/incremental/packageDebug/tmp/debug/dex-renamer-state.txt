@@ -1,4 +1,4 @@
-#Wed May 29 17:40:53 GFT 2019
+#Wed Jun 05 13:35:49 GFT 2019
 base.0=C\:\\Users\\Luke\\AndroidStudioProjects\\Marvel-Heroes\\build\\app\\intermediates\\transforms\\dexMerger\\debug\\0
 path.0=classes.dex
 renamed.0=classes.dex

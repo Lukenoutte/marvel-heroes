@@ -6,7 +6,8 @@ import 'dart:convert';
 import 'package:programacao_mobile/heroesdetail.dart';
 import 'package:programacao_mobile/Heroes.dart';
 import 'package:dio/dio.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 void main() => runApp(MyApp());
 
@@ -42,6 +43,8 @@ class _MyHomePageState extends State<MyHomePage> {
   var offset = 0;
   var firstCall = true;
   var lastTotalReturnedItems = 0;
+  var textValue = '';
+  final FirebaseMessaging firebaseMessaging = new FirebaseMessaging();
   List<Results> listH = new List<Results>();
   ScrollController _scrollController = new ScrollController();
   Heroes herois;
@@ -53,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 @override
  void initState(){
-   super.initState();
+     super.initState();
    if(firstCall == true) {
      fetchData();
    }
@@ -64,6 +67,21 @@ class _MyHomePageState extends State<MyHomePage> {
 
   }
    });
+   firebaseMessaging.configure(
+     onLaunch: (Map<String, dynamic> msg){
+   print("on launch $msg");
+   },
+     onResume: (Map<String, dynamic> msg){
+       print("on resume $msg");
+     },
+     onMessage: (Map<String, dynamic> msg){
+       print("on message $msg");
+     },
+   );
+     firebaseMessaging.getToken().then((token){
+       print(token);
+     });
+
  }
 
 
@@ -73,7 +91,7 @@ void dispose(){
   _scrollController.dispose();
   super.dispose();
 }
- 
+
 
 // Recebendo JSON
 fetchData() async{

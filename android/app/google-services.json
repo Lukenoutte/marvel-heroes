@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "69651561610",
+    "firebase_url": "https://marvel-heroes-ec0cb.firebaseio.com",
+    "project_id": "marvel-heroes-ec0cb",
+    "storage_bucket": "marvel-heroes-ec0cb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:69651561610:android:2f6c141e1f8e7685",
+        "android_client_info": {
+          "package_name": "unit.programacao_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "69651561610-ibgoh8cn6l83ljs5ij1l3h97qlkmifnp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBj4omCGwl6atYn_bCMeIJQkXEU282yriA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "69651561610-ibgoh8cn6l83ljs5ij1l3h97qlkmifnp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

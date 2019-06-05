@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">69651561610-ibgoh8cn6l83ljs5ij1l3h97qlkmifnp.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://marvel-heroes-ec0cb.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">69651561610</string>
+    <string name="google_api_key" translatable="false">AIzaSyBj4omCGwl6atYn_bCMeIJQkXEU282yriA</string>
+    <string name="google_app_id" translatable="false">1:69651561610:android:2f6c141e1f8e7685</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBj4omCGwl6atYn_bCMeIJQkXEU282yriA</string>
+    <string name="google_storage_bucket" translatable="false">marvel-heroes-ec0cb.appspot.com</string>
+    <string name="project_id" translatable="false">marvel-heroes-ec0cb</string>
+</resources>
